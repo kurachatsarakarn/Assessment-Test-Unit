@@ -9,7 +9,7 @@
 </div>
 
 <div align="center">
-  <h3>แบบทดสอบ สัมภาษณ์ บริษัท Unit</h3>
+  <h3>แบบทดสอบสัมภาษณ์บริษัท Unit</h3>
   <p>Built with Node.js, Express, PostgreSQL, and modern web technologies</p>
 </div>
 
