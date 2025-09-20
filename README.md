@@ -40,15 +40,6 @@
 | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) | Containerization |
 | ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) | Version Control |
 
----
-
-## ⚡ Quick Start
-
-### Prerequisites
-- Node.js (v18 or higher)
-- Docker & Docker Compose
-- Git
-
 
 ---
 
