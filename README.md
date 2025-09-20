@@ -49,14 +49,6 @@
 - Docker & Docker Compose
 - Git
 
-### 🚀 One-Command Setup
-```bash
-# Clone and setup everything
-git clone https://github.com/kurachatsarakarn/Assessment-Test-Unit.git
-cd Assessment-Test-Unit
-cd database && docker-compose up -d && cd ../backend && npm install && npm start
-# Then open frontend/index.html in your browser
-```
 
 ---
 
