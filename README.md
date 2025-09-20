@@ -65,6 +65,7 @@ docker ps
 ```bash
 cd backend
 npm install
+npm start
 ```
 
 ### Step 4: 🌐 Open Frontend
