@@ -63,7 +63,7 @@ docker ps
 
 ### Step 3: 📦 Install Dependencies
 ```bash
-cd ../backend
+cd backend
 npm install
 ```
 
