@@ -1,0 +1,145 @@
+/* รีเซ็ตเบื้องต้น */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #0077cc;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 3px rgba(0, 119, 204, 0.3);
+}
+
+button {
+  padding: 12px;
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+.link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.link a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+#msg {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: red;
+}
+
+/* profile page */
+.profile-box {
+  margin-bottom: 16px;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.logout-btn {
+  margin-top: 16px;
+  background: #dc3545;
+}
+
+.logout-btn:hover {
+  background: #a71d2a;
+}
+
+.password-field {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  color: #666;
+  z-index: 10;
+  width: 30px; /* เพิ่มขนาด */
+  height: 30px; /* เพิ่มขนาด */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: #0077cc;
+}
+
+.password-toggle svg {
+  width: 40px; /* เพิ่มขนาด svg */
+  height: 28px; /* เพิ่มขนาด svg */
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

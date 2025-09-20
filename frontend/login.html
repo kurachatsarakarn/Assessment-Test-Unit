@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>เข้าสู่ระบบ</h1>
+      <form id="loginForm">
+        <input name="email" type="email" placeholder="Email" required />
+
+        <div class="password-field">
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <span class="password-toggle" data-target="password">
+            <svg class="eye-open">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg class="eye-closed" style="display: none">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <path
+                d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+              ></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </span>
+        </div>
+
+        <button type="button" id="loginBtn">เข้าสู่ระบบ</button>
+      </form>
+      <div id="msg"></div>
+      <div class="link">
+        ยังไม่มีบัญชี? <a href="register.html">สมัครสมาชิก</a>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // Toggle show/hide password
+        $(".password-toggle").on("click", function () {
+          const target = $(this).data("target");
+          const passwordField = $(`input[name="${target}"]`);
+          const eyeOpen = $(this).find(".eye-open");
+          const eyeClosed = $(this).find(".eye-closed");
+
+          if (passwordField.attr("type") === "password") {
+            passwordField.attr("type", "text");
+            eyeOpen.hide();
+            eyeClosed.show();
+          } else {
+            passwordField.attr("type", "password");
+            eyeOpen.show();
+            eyeClosed.hide();
+          }
+        });
+
+        // Form submission
+        $("#loginBtn").on("click", function (e) {
+          e.preventDefault();
+          const data = {
+            email: $('#loginForm input[name="email"]').val(),
+            password: $('#loginForm input[name="password"]').val(),
+          };
+
+          loginUser(
+            data,
+            (res) => {
+              console.log(res);
+              localStorage.setItem("token", res.token);
+              $("#msg")
+                .css("color", "green")
+                .text("เข้าสู่ระบบสำเร็จ! กำลังไปหน้าโปรไฟล์...");
+              setTimeout(() => {
+                window.location.href = "profile.html";
+              }, 1500);
+            },
+            (err) => $("#msg").css("color", "red").text(err)
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

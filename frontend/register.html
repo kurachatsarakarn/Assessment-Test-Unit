@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>สมัครสมาชิก</h1>
+      <form id="registerForm">
+        <input name="email" type="email" placeholder="Email" required />
+
+        <div class="password-field">
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            minlength="6"
+          />
+          <span class="password-toggle" data-target="password">
+            <svg class="eye-open">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg class="eye-closed" style="display: none">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <path
+                d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+              ></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </span>
+        </div>
+
+        <div class="password-field">
+          <input
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            required
+            minlength="6"
+          />
+          <span class="password-toggle" data-target="confirmPassword">
+            <svg class="eye-open">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg class="eye-closed" style="display: none">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <path
+                d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+              ></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </span>
+        </div>
+
+        <input name="username" placeholder="Username" required />
+
+        <button type="button" id="registerBtn">ลงทะเบียน</button>
+      </form>
+      <div id="msg"></div>
+      <div class="link">มีบัญชีแล้ว? <a href="login.html">เข้าสู่ระบบ</a></div>
+    </div>
+
+    <script>
+      // ฟังก์ชันสำหรับ toggle password visibility
+      $(".password-toggle").on("click", function () {
+        const target = $(this).data("target");
+        const passwordField = $(`input[name="${target}"]`);
+        const eyeOpen = $(this).find(".eye-open");
+        const eyeClosed = $(this).find(".eye-closed");
+
+        if (passwordField.attr("type") === "password") {
+          passwordField.attr("type", "text");
+          eyeOpen.hide();
+          eyeClosed.show();
+        } else {
+          passwordField.attr("type", "password");
+          eyeOpen.show();
+          eyeClosed.hide();
+        }
+      });
+
+      $("#registerBtn").on("click", function (e) {
+        e.preventDefault();
+
+        const data = {
+          email: $("#registerForm [name=email]").val().trim(),
+          password: $("#registerForm [name=password]").val(),
+          username: $("#registerForm [name=username]").val().trim(),
+        };
+
+        // ตรวจสอบ email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(data.email)) {
+          $("#msg").css("color", "red").text("รูปแบบ Email ไม่ถูกต้อง");
+          return;
+        }
+
+        if (data.password.length < 6) {
+          $("#msg")
+            .css("color", "red")
+            .text("รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร");
+          return;
+        }
+
+        if (data.password !== $("#registerForm [name=confirmPassword]").val()) {
+          $("#msg").css("color", "red").text("รหัสผ่านไม่ตรงกัน");
+          return;
+        }
+
+        if (!data.username) {
+          $("#msg").css("color", "red").text("กรุณากรอก Username");
+          return;
+        }
+
+        // ส่งข้อมูลไป register
+        registerUser(
+          data,
+          () => {
+            $("#msg")
+              .css("color", "green")
+              .text("สมัครสำเร็จ! กำลังไปหน้าเข้าสู่ระบบ...");
+            setTimeout(() => {
+              window.location.href = "login.html";
+            }, 1500);
+          },
+          (err) => $("#msg").css("color", "red").text(err)
+        );
+      });
+    </script>
+  </body>
+</html>
