@@ -97,19 +97,3 @@ npm start
 - **Backend API**: http://localhost:4000
 - **Database**: localhost:5432
 
----
-
-## 📜 License
-
-This project is created for **educational purposes** only.
-
-<div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/kurachatsarakarn">Kurachat Sarakarn</a></p>
-  <p>⭐ Star this repo if you found it helpful!</p>
-</div>
-
----
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Built%20with-❤️-red?style=for-the-badge" alt="Built with Love">
-</div>
